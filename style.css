@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0d0d0d;
+  color: white;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 60px;
+}
+
+.projects {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 100px;
+}
+
+.card {
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 10px;
+  width: 250px;
+}
+
+.card a {
+  color: #C85A5A;
+  text-decoration: none;
+}

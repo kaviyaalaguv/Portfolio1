@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaviya | UI/UX Designer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:auto;}
+
+body{
+  font-family:Poppins;
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* GLOW */
+.glow{
+  position:fixed;
+  width:300px;height:300px;
+  background:radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  z-index:0;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  width:100%;
+  padding:18px 60px;
+  display:flex;
+  justify-content:space-between;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+}
+nav a{
+  color:#aaa;
+  margin:0 15px;
+  text-decoration:none;
+  position:relative;
+}
+nav a:hover{color:#fff;}
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:0%;
+  height:2px;
+  background:#fff;
+  transition:0.3s;
+}
+nav a:hover::after{width:100%;}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.hero-title{
+  font-size:75px;
+  font-family:Space Grotesk;
+}
+.hero-title span{
+  font-family:Playfair Display;
+  font-style:italic;
+}
+.role{margin-top:10px;font-size:20px;opacity:0.7;}
+.animated-text{margin-top:10px;font-size:18px;opacity:0.8;}
+
+.hero-btn{
+  margin-top:30px;
+  padding:12px 28px;
+  border:1px solid #fff;
+  border-radius:30px;
+  background:none;
+  color:#fff;
+  cursor:pointer;
+}
+.hero-btn:hover{background:#fff;color:#000;}
+
+/* CURVE */
+.curve-transition{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:2000;
+  pointer-events:none;
+}
+#curvePath{
+  fill:#fff;
+  transform:translateY(100%);
+}
+
+/* SECTIONS */
+section{padding:100px 60px;}
+.section-title{
+  font-size:36px;
+  margin-bottom:40px;
+  font-family:Space Grotesk;
+}
+
+/* PROJECTS */
+.projects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+.card{
+  position:relative;
+  height:240px;
+  border-radius:16px;
+  overflow:hidden;
+  transform-style:preserve-3d;
+  transition:transform 0.2s ease;
+}
+.card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(0.5);
+  transition:0.4s;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg, rgba(255,255,255,0.15), transparent 60%);
+  opacity:0;
+  transition:0.3s;
+}
+.card:hover::before{opacity:1;}
+.card:hover img{
+  transform:scale(1.05);
+  filter:brightness(0.7);
+}
+.card-overlay{
+  position:absolute;
+  inset:0;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+
+/* EXPERIENCE */
+.exp-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+.exp-card{
+  padding:25px;
+  border-radius:16px;
+  background:#111;
+  border:1px solid #222;
+  transition:0.3s;
+}
+.exp-card:hover{
+  transform:translateY(-8px);
+  border-color:#444;
+}
+
+/* EDUCATION */
+.education{background:#fff;color:#000;}
+.edu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+.edu-card{
+  padding:30px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#fff,#f0f0f0);
+  box-shadow:0 10px 40px rgba(0,0,0,0.1);
+  transition:0.4s;
+}
+.edu-card:hover{
+  transform:translateY(-10px) scale(1.02);
+}
+
+/* SKILLS */
+.skills-section{
+  width:100vw;
+  margin-left:calc(-50vw + 50%);
+  overflow:hidden;
+  background:#111;
+  padding:50px 0;
+}
+.skills-marquee{
+  display:flex;
+  width:max-content;
+  animation:marquee 35s linear infinite;
+}
+.skills-track{
+  display:flex;
+  gap:60px;
+}
+.skill{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:18px;
+  opacity:0.85;
+  white-space:nowrap;
+}
+@keyframes marquee{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-50%);}
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:60px;
+  border-top:1px solid #111;
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<!-- CURVE -->
+<svg class="curve-transition" viewBox="0 0 1440 800" preserveAspectRatio="none">
+<path id="curvePath" d="M0,800 Q720,800 1440,800 L1440,0 L0,0 Z"></path>
+</svg>
+
+<nav>
+<h2>Kaviya</h2>
+<div>
+<a href="#projects">Projects</a>
+<a href="#experience">Experience</a>
+<a href="#education">Education</a>
+<a href="#skills">Skills</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div>
+<div class="hero-title">Kaviya <span>Alagu</span></div>
+<div class="role">UI/UX Designer</div>
+<div class="animated-text" id="textLoop">Designer</div>
+<button class="hero-btn" id="exploreBtn">Explore Work ↓</button>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+<h2 class="section-title">Projects</h2>
+<div class="projects">
+
+<a href="preptrack.html" style="text-decoration:none;color:inherit;">
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
+    <div class="card-overlay">
+      <h3>PrepTrack</h3>
+      <p>Plan smarter. Study consistently.</p>
+    </div>
+  </div>
+</a>
+
+<a href="amazon.html" style="text-decoration:none;color:inherit;">
+  <div class="card">
+   <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da">
+   <div class="card-overlay">
+   <h3>Amazon Redesign</h3>
+   <p>Faster, cleaner shopping flow.</p>
+   </div>
+  </div>
+</a>
+
+<a href="stageseat.html" style="text-decoration:none;color:inherit;">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2">
+      <div class="card-overlay">
+      <h3>StageSeat</h3>
+      <p>Simple and intuitive booking.</p>
+      </div>
+      </div>
+</a>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+<h2 class="section-title">Work Experience</h2>
+<div class="exp-grid">
+
+<div class="exp-card">
+<h3>Software Engineer Trainee</h3>
+<p>Skillrank • Dec 2024 – Mar 2025</p>
+<p>Worked on API validation and backend testing with structured issue tracking.</p>
+</div>
+
+<div class="exp-card">
+<h3>Web Development Intern</h3>
+<p>Brassy Technologies • Jun 2023 – Jul 2023</p>
+<p>Built UI components and supported integration and debugging workflows.</p>
+</div>
+
+</div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="education">
+<h2 class="section-title">Education</h2>
+<div class="edu-grid">
+
+<div class="edu-card">
+<h3>B.E. Electronics and Communication Engineering</h3>
+<p>Francis Xavier Engineering College (2021–2025)</p>
+</div>
+
+<div class="edu-card">
+<h3>Minor Course – Cybersecurity</h3>
+<p>Strong foundation in security fundamentals</p>
+</div>
+
+</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+<div class="skills-marquee">
+
+<div class="skills-track">
+<div class="skill"><i class="fa-brands fa-figma"></i>Figma</div>
+<div class="skill"><i class="fa-solid fa-pencil-ruler"></i>UI Design</div>
+<div class="skill"><i class="fa-solid fa-layer-group"></i>UX Design</div>
+<div class="skill"><i class="fa-solid fa-sitemap"></i>Wireframing</div>
+<div class="skill"><i class="fa-solid fa-cubes"></i>Prototyping</div>
+<div class="skill"><i class="fa-solid fa-route"></i>User Flow</div>
+<div class="skill"><i class="fa-solid fa-eye"></i>Visual Hierarchy</div>
+<div class="skill"><i class="fa-solid fa-hand-pointer"></i>Interaction</div>
+<div class="skill"><i class="fa-brands fa-python"></i>Python</div>
+<div class="skill"><i class="fa-brands fa-html5"></i>HTML</div>
+</div>
+
+<div class="skills-track">
+<div class="skill"><i class="fa-brands fa-figma"></i>Figma</div>
+<div class="skill"><i class="fa-solid fa-pencil-ruler"></i>UI Design</div>
+<div class="skill"><i class="fa-solid fa-layer-group"></i>UX Design</div>
+<div class="skill"><i class="fa-solid fa-sitemap"></i>Wireframing</div>
+<div class="skill"><i class="fa-solid fa-cubes"></i>Prototyping</div>
+<div class="skill"><i class="fa-solid fa-route"></i>User Flow</div>
+<div class="skill"><i class="fa-solid fa-eye"></i>Visual Hierarchy</div>
+<div class="skill"><i class="fa-solid fa-hand-pointer"></i>Interaction</div>
+<div class="skill"><i class="fa-brands fa-python"></i>Python</div>
+<div class="skill"><i class="fa-brands fa-html5"></i>HTML</div>
+</div>
+
+</div>
+</section>
+
+<footer>
+<h2>Let’s work together</h2>
+<p style="margin-top:10px;">kaviyaalagu17@gmail.com</p>
+</footer>
+
+<script>
+/* GLOW */
+const glow=document.querySelector(".glow");
+document.addEventListener("mousemove",e=>{
+glow.style.left=e.clientX+"px";
+glow.style.top=e.clientY+"px";
+});
+
+/* TEXT LOOP */
+const words=["Designer","Creator","Thinker"];
+let i=0;
+setInterval(()=>{
+document.getElementById("textLoop").innerText=words[i];
+i=(i+1)%words.length;
+},2000);
+
+/* CURVE */
+const btn=document.getElementById("exploreBtn");
+const path=document.getElementById("curvePath");
+const target=document.querySelector("#projects");
+
+btn.addEventListener("click",()=>{
+path.style.transition="all 0.7s cubic-bezier(.65,0,.35,1)";
+path.style.transform="translateY(0%)";
+
+setTimeout(()=>{
+path.setAttribute("d","M0,400 Q720,200 1440,400 L1440,0 L0,0 Z");
+},250);
+
+setTimeout(()=>{
+smoothScroll(target.offsetTop,1000);
+},500);
+
+setTimeout(()=>{
+path.style.transition="none";
+path.style.transform="translateY(100%)";
+path.setAttribute("d","M0,800 Q720,800 1440,800 L1440,0 L0,0 Z");
+},1200);
+});
+
+/* NAV */
+document.querySelectorAll("nav a").forEach(link=>{
+link.addEventListener("click",function(e){
+e.preventDefault();
+const target=document.querySelector(this.getAttribute("href"));
+smoothScroll(target.offsetTop,900);
+});
+});
+
+/* SCROLL */
+function smoothScroll(targetY,duration){
+const startY=window.scrollY;
+const diff=targetY-startY;
+let start;
+
+function step(t){
+if(!start) start=t;
+const time=t-start;
+const percent=Math.min(time/duration,1);
+
+const ease = percent<0.5
+?4*percent*percent*percent
+:1-Math.pow(-2*percent+2,3)/2;
+
+window.scrollTo(0,startY+diff*ease);
+
+if(time<duration) requestAnimationFrame(step);
+}
+requestAnimationFrame(step);
+}
+
+/* CARD TILT */
+document.querySelectorAll(".card").forEach(card=>{
+card.addEventListener("mousemove",(e)=>{
+const rect=card.getBoundingClientRect();
+const x=e.clientX-rect.left;
+const y=e.clientY-rect.top;
+const cx=rect.width/2;
+const cy=rect.height/2;
+
+const rx=-(y-cy)/12;
+const ry=(x-cx)/12;
+
+card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg) scale(1.05)`;
+});
+
+card.addEventListener("mouseleave",()=>{
+card.style.transform="rotateX(0) rotateY(0) scale(1)";
+});
+});
+</script>
+
+</body>
+</html>
