@@ -227,6 +227,33 @@ footer{
   padding:60px;
   border-top:1px solid #111;
 }
+/* ===== MOBILE NAV FIX ONLY ===== */
+@media (max-width: 768px) {
+
+  nav{
+    padding: 15px 20px;
+  }
+
+  nav div{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:10px;
+  }
+
+  nav a{
+    margin: 0;
+    font-size: 12px;
+    padding: 6px 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    background: rgba(255,255,255,0.03);
+  }
+
+  nav a:hover{
+    background: rgba(255,255,255,0.08);
+  }
+}
 </style>
 </head>
 
