@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CalmSpace Case Study</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:Poppins;
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* SCROLL BAR */
+.progress-bar{
+  position:fixed;
+  top:0;
+  left:0;
+  height:4px;
+  width:0%;
+  background:#fff;
+  z-index:2000;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px;
+}
+
+/* HERO CARD */
+.hero-card{
+  position:relative;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(20px);
+  padding:40px;
+  border-radius:20px;
+  text-align:center;
+  max-width:520px;
+  width:100%;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+  transition:0.4s;
+}
+
+/* SHINE */
+.hero-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-75%;
+  width:50%;
+  height:100%;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform:skewX(-20deg);
+}
+.hero-card:hover::before{animation:shine 1s;}
+@keyframes shine{100%{left:125%;}}
+
+.hero-card:hover{transform:translateY(-6px) scale(1.02);}
+
+/* TITLE */
+.hero-card h1{
+  font-size:42px;
+  font-family:Playfair Display;
+}
+
+/* TAGLINE */
+.tagline{
+  margin-top:10px;
+  opacity:0.75;
+  font-size:15px;
+}
+
+/* BUTTONS */
+.hero-buttons{
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+}
+
+.btn{
+  position:relative;
+  overflow:hidden;
+  padding:12px 22px;
+  border-radius:30px;
+  text-decoration:none;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.btn.primary{
+  background:#fff;
+  color:#000;
+}
+.btn.secondary{
+  border:1px solid #fff;
+  color:#fff;
+}
+
+/* SECTIONS */
+.section{
+  position:relative;
+  padding:80px 60px;
+  max-width:900px;
+  margin:40px auto;
+  border-radius:18px;
+
+  opacity:0;
+  transform:translateY(50px);
+  transition:0.8s cubic-bezier(.2,.8,.2,1);
+
+  background:linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+}
+
+.section:nth-child(even){
+  background:linear-gradient(145deg, rgba(255,255,255,0.02), rgba(255,255,255,0.06));
+}
+
+.section.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.section::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:30px;
+  width:4px;
+  height:60px;
+  background:linear-gradient(to bottom, #fff, transparent);
+  opacity:0.6;
+}
+
+.section:hover{
+  transform:translateY(-6px) scale(1.01);
+  box-shadow:0 25px 80px rgba(255,255,255,0.08);
+}
+
+/* TEXT */
+.section h2{
+  font-size:30px;
+  margin-bottom:15px;
+  font-family:Playfair Display;
+}
+.section p{
+  opacity:0.85;
+  line-height:1.7;
+}
+
+/* PHONE FRAME */
+.phone-frame{
+  width:300px;
+  height:600px;
+  margin:40px auto;
+  padding:12px;
+  border-radius:30px;
+  background:#111;
+  box-shadow:0 20px 60px rgba(0,0,0,0.8);
+}
+
+/* ✅ FIX APPLIED HERE ONLY */
+.phone-screen{
+  width:100%;
+  height:100%;
+  overflow:hidden; /* removed scroll */
+  border-radius:20px;
+}
+.phone-screen img{
+  width:100%;
+  height:100%;
+  object-fit:cover; /* makes image fit perfectly */
+}
+
+/* BACK */
+.back{
+  position:fixed;
+  top:20px;
+  left:20px;
+  text-decoration:none;
+  color:#fff;
+  opacity:0.7;
+}
+.back:hover{opacity:1;}
+
+</style>
+</head>
+
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<a href="index.html" class="back">← Back</a>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-card">
+
+    <h1>CalmSpace</h1>
+
+    <p class="tagline">
+      A mindful reset app that helps users pause, reset, and refocus.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#content" class="btn primary">View Case Study ↓</a>
+      <a href="https://www.figma.com/proto/5ZElbWyjG3fCjbZkMTROZf/Calmspace?page-id=0%3A1&node-id=1-2&p=f&viewport=-82%2C169%2C0.57&t=RG7wdKMBLMquWEMw-1&scaling=scale-down&content-scaling=fixed" class="btn secondary">Live Prototype</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div id="content">
+
+<div class="section">
+<h2>Overview</h2>
+<p>
+CalmSpace helps users handle overwhelming emotions through simple, guided steps that reduce mental load and encourage action.
+</p>
+</div>
+
+<div class="section">
+<h2>Problem</h2>
+<p>
+Users feel overwhelmed, anxious, or low energy, but existing apps are complex and require effort instead of helping instantly.
+</p>
+</div>
+
+<div class="section">
+<h2>Solution</h2>
+<p>
+A minimal experience that allows users to select their mood and follow a guided, step-by-step reset.
+</p>
+</div>
+
+<div class="section">
+<h2>Entry Experience</h2>
+
+<div class="phone-frame">
+  <div class="phone-screen">
+    <img src="calmspace-thumbnail.png">
+  </div>
+</div>
+
+<p>
+A calm entry screen invites users to begin without overwhelming choices.
+</p>
+
+</div>
+
+<div class="section">
+<h2>Mood Selection</h2>
+
+<div class="phone-frame">
+  <div class="phone-screen">
+    <img src="calmspace-screen1.png">
+  </div>
+</div>
+
+<p>
+Users select how they feel to receive a personalized guided flow.
+</p>
+
+</div>
+
+<div class="section">
+<h2>Guided Experience</h2>
+
+<div class="phone-frame">
+  <div class="phone-screen">
+    <img src="calmspace-screen2.png">
+  </div>
+</div>
+
+<p>
+Steps are broken into simple actions, reducing cognitive load and encouraging completion.
+</p>
+
+</div>
+
+<div class="section">
+<h2>Focus & Completion</h2>
+
+<div class="phone-frame">
+  <div class="phone-screen">
+    <img src="calmspace-screen3.png">
+  </div>
+</div>
+
+<p>
+Soft progress indicators guide users without pressure and reinforce small wins.
+</p>
+
+</div>
+
+<div class="section">
+<h2>Key Decisions</h2>
+<p>
+• Step-by-step guidance instead of instructions<br>
+• No strict timers to avoid stress<br>
+• Minimal UI for calm interaction<br>
+• Emotion-based flow instead of generic actions
+</p>
+</div>
+
+<div class="section">
+<h2>Explore</h2>
+
+<a class="btn secondary" href="Calmspace.pdf" target="_blank">
+  View PDF
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+/* PROGRESS BAR */
+window.addEventListener("scroll",()=>{
+  let scrollTop=document.documentElement.scrollTop;
+  let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.getElementById("progressBar").style.width=(scrollTop/height)*100+"%";
+});
+
+/* SCROLL REVEAL */
+const sections=document.querySelectorAll(".section");
+window.addEventListener("scroll",()=>{
+  const trigger=window.innerHeight*0.85;
+  sections.forEach(sec=>{
+    if(sec.getBoundingClientRect().top<trigger){
+      sec.classList.add("active");
+    }
+  });
+});
+
+/* RIPPLE */
+document.querySelectorAll(".btn").forEach(btn=>{
+  btn.addEventListener("click",function(e){
+    let x=e.clientX-this.offsetLeft;
+    let y=e.clientY-this.offsetTop;
+
+    let ripple=document.createElement("span");
+    ripple.style.left=x+"px";
+    ripple.style.top=y+"px";
+
+    this.appendChild(ripple);
+    setTimeout(()=>ripple.remove(),600);
+  });
+});
+
+</script>
+
+</body>
+</html>
