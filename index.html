@@ -215,14 +215,18 @@ section{padding:100px 60px;}
   background:#111;
   padding:50px 0;
 }
-.skills-marquee{
-  display:flex;
-  width:max-content;
-  animation:marquee 35s linear infinite;
+.skills-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+  /* Add this line to bridge the gap between the two tracks */
+  gap: 60px; 
 }
-.skills-track{
-  display:flex;
-  gap:60px;
+
+.skills-track {
+  display: flex;
+  /* Keep this to space items within the track */
+  gap: 60px;
 }
 .skill{
   display:flex;
