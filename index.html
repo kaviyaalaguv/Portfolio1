@@ -215,6 +215,7 @@ section{padding:100px 60px;}
   background:#111;
   padding:50px 0;
 }
+/* Updated Skills CSS */
 .skills-marquee {
   display: flex;
   width: max-content;
@@ -284,6 +285,7 @@ footer{
     padding:8px 12px;
     border-radius:8px;
   }
+  
 }
 </style>
 </head>
@@ -318,8 +320,18 @@ footer{
 <section class="hero">
 <div>
 <div class="hero-title">Kaviya <span>Alagu</span></div>
-<div class="role">UI/UX Designer</div>
-<div class="animated-text" id="textLoop">Designer</div>
+
+<!-- UPDATED -->
+<div class="role">UI/UX Designer | Frontend Enthusiast</div>
+
+<!-- UPDATED -->
+<div class="animated-text">
+  Designed with usability in mind & built using HTML and CSS
+</div>
+
+<!-- (textLoop kept, just updated words in JS) -->
+<div class="animated-text" id="textLoop"></div>
+
 <button class="hero-btn" id="exploreBtn">Explore Work ↓</button>
 </div>
 </section>
@@ -334,7 +346,7 @@ footer{
     <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
     <div class="card-overlay">
       <h3>PrepTrack</h3>
-      <p>Plan smarter. Study consistently.</p>
+      <p>Exam planner to simplify scheduling and improve consistency</p>
     </div>
   </div>
 </a>
@@ -344,7 +356,7 @@ footer{
    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da">
    <div class="card-overlay">
    <h3>Amazon Redesign</h3>
-   <p>Faster, cleaner shopping flow.</p>
+   <p>Improved usability by reducing clutter and optimizing layout</p>
    </div>
   </div>
 </a>
@@ -354,7 +366,7 @@ footer{
       <img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2">
       <div class="card-overlay">
       <h3>StageSeat</h3>
-      <p>Simple and intuitive booking.</p>
+      <p>Simplified event booking with intuitive seat selection</p>
       </div>
       </div>
 </a>
@@ -365,6 +377,16 @@ footer{
     <div class="card-overlay">
       <h3>CalmSpace</h3>
       <p>Guided resets for a calmer mind.</p>
+    </div>
+  </div>
+</a>
+
+<a href="milkymist.html" style="text-decoration:none;color:inherit;">
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f">
+    <div class="card-overlay">
+      <h3>Milky Mist Landing Page</h3>
+      <p>Conversion-focused dessert landing page with premium UI</p>
     </div>
   </div>
 </a>
@@ -456,7 +478,7 @@ glow.style.top=e.clientY+"px";
 });
 
 /* TEXT LOOP */
-const words=["Designer","Creator","Thinker"];
+const words=["UI/UX Designer","Frontend Learner","Problem Solver"];
 let i=0;
 setInterval(()=>{
 document.getElementById("textLoop").innerText=words[i];
