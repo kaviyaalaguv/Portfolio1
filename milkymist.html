@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Milky Mist Landing Page Case Study</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:Poppins;
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* SCROLL BAR */
+.progress-bar{
+  position:fixed;
+  top:0;
+  left:0;
+  height:4px;
+  width:0%;
+  background:#fff;
+  z-index:2000;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px;
+}
+
+/* HERO CARD */
+.hero-card{
+  position:relative;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(20px);
+  padding:40px;
+  border-radius:20px;
+  text-align:center;
+  max-width:520px;
+  width:100%;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+  transition:0.4s;
+}
+
+.hero-card:hover{transform:translateY(-6px) scale(1.02);}
+
+/* TITLE */
+.hero-card h1{
+  font-size:42px;
+  font-family:Playfair Display;
+}
+
+/* TAGLINE */
+.tagline{
+  margin-top:10px;
+  opacity:0.75;
+  font-size:15px;
+}
+
+/* BUTTONS */
+.hero-buttons{
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+}
+
+.btn{
+  padding:12px 22px;
+  border-radius:30px;
+  text-decoration:none;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.btn.primary{
+  background:#fff;
+  color:#000;
+}
+.btn.secondary{
+  border:1px solid #fff;
+  color:#fff;
+}
+
+/* SECTIONS */
+.section{
+  position:relative;
+  padding:80px 60px;
+  max-width:900px;
+  margin:40px auto;
+  border-radius:18px;
+  overflow:hidden;
+
+  opacity:0;
+  transform:translateY(50px);
+  transition:0.8s cubic-bezier(.2,.8,.2,1);
+
+  background:linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+}
+
+.section.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.section h2{
+  font-size:30px;
+  margin-bottom:15px;
+  font-family:Playfair Display;
+}
+.section p{
+  opacity:0.85;
+  line-height:1.7;
+}
+
+/* DESKTOP IMAGE */
+.full-image{
+  margin-top:30px;
+}
+.full-image img{
+  width:100%;
+  border-radius:12px;
+}
+
+/* MOBILE FRAME */
+.phone-frame{
+  width:300px;
+  height:600px;
+  margin:40px auto;
+  padding:12px;
+  border-radius:30px;
+  background:#111;
+  box-shadow:0 20px 60px rgba(0,0,0,0.8);
+}
+.phone-screen{
+  width:100%;
+  height:100%;
+  overflow-y:auto;
+  border-radius:20px;
+}
+.phone-screen img{
+  width:100%;
+}
+
+/* BACK */
+.back{
+  position:fixed;
+  top:20px;
+  left:20px;
+  text-decoration:none;
+  color:#fff;
+  opacity:0.7;
+}
+.back:hover{opacity:1;}
+
+</style>
+</head>
+
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<a href="index.html" class="back">← Back</a>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-card">
+
+    <h1>Milky Mist Landing Page</h1>
+
+    <p class="tagline">
+      Designing a premium, conversion-focused dessert experience
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#content" class="btn primary">View Case Study ↓</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div id="content">
+
+<div class="section">
+<h2>Overview</h2>
+<p>
+Designed a landing page focused on conversion, clarity, and premium visual appeal. 
+Handled mismatch between ice cream brief and chocolate assets by maintaining a unified dessert theme.
+</p>
+</div>
+
+<div class="section">
+<h2>Problem</h2>
+<p>
+The brief required an ice cream landing page, but the provided assets were chocolate-based. 
+This created inconsistency in visual direction and messaging.
+</p>
+</div>
+
+<div class="section">
+<h2>Goals</h2>
+<p>
+• Create a conversion-focused landing page<br>
+• Maintain premium visual identity<br>
+• Ensure clarity in product sections<br>
+• Improve content hierarchy<br>
+• Design responsive mobile layout
+</p>
+</div>
+
+<div class="section">
+<h2>Design Approach</h2>
+<p>
+Used structured sections with clear CTAs and minimal clutter. 
+Introduced a premium "Single Origin" section to highlight product uniqueness and enhance storytelling.
+</p>
+</div>
+
+<div class="section">
+<h2>Final Desktop Design</h2>
+
+<div class="full-image">
+  <img src="Milkymist-screen2.png">
+</div>
+
+</div>
+
+<div class="section">
+<h2>Mobile Design</h2>
+
+<div class="phone-frame">
+  <div class="phone-screen">
+    <img src="Milkymist-screen1.png">
+  </div>
+</div>
+
+</div>
+
+<div class="section">
+<h2>Key Improvements</h2>
+<p>
+• Clear section hierarchy for better navigation<br>
+• Strong CTA placement for conversion<br>
+• Premium product storytelling (Single Origin)<br>
+• Balanced visuals with product information<br>
+• Mobile-first responsive layout
+</p>
+</div>
+
+<div class="section">
+<h2>UX Thinking</h2>
+<p>
+Focused on guiding users from discovery to action through structured sections, 
+visual hierarchy, and minimal distractions.
+</p>
+</div>
+
+</div>
+
+<script>
+
+/* PROGRESS BAR */
+window.addEventListener("scroll",()=>{
+  let scrollTop=document.documentElement.scrollTop;
+  let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.getElementById("progressBar").style.width=(scrollTop/height)*100+"%";
+});
+
+/* SCROLL REVEAL */
+const sections=document.querySelectorAll(".section");
+window.addEventListener("scroll",()=>{
+  const trigger=window.innerHeight*0.85;
+  sections.forEach(sec=>{
+    if(sec.getBoundingClientRect().top<trigger){
+      sec.classList.add("active");
+    }
+  });
+});
+
+</script>
+
+</body>
+</html>
