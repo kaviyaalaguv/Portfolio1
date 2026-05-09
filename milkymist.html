@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Milky Mist Landing Page Case Study</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Poppins;
+background:#000;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* SCROLL BAR */
+
+.progress-bar{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+width:0%;
+background:#fff;
+z-index:2000;
+}
+
+/* BACK */
+
+.back{
+position:fixed;
+top:20px;
+left:20px;
+text-decoration:none;
+color:#fff;
+opacity:0.7;
+z-index:1000;
+}
+
+.back:hover{
+opacity:1;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:40px;
+background:
+linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.82)),
+url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600&auto=format&fit=crop');
+
+background-size:cover;
+background-position:center;
+}
+
+/* HERO CARD */
+
+.hero-card{
+position:relative;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(20px);
+padding:40px;
+border-radius:24px;
+text-align:center;
+max-width:700px;
+width:100%;
+overflow:hidden;
+box-shadow:0 20px 60px rgba(0,0,0,0.6);
+transition:0.4s;
+}
+
+.hero-card:hover{
+transform:translateY(-6px) scale(1.01);
+}
+
+/* TITLE */
+
+.hero-card h1{
+font-size:54px;
+font-family:Playfair Display;
+}
+
+/* TAGLINE */
+
+.tagline{
+margin-top:15px;
+opacity:0.8;
+font-size:17px;
+line-height:1.8;
+}
+
+/* BUTTONS */
+
+.hero-buttons{
+margin-top:30px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:14px 24px;
+border-radius:30px;
+text-decoration:none;
+font-size:14px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn.primary{
+background:#fff;
+color:#000;
+}
+
+.btn.primary:hover{
+background:#e5e5e5;
+}
+
+/* TAGS */
+
+.tags{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+margin-top:25px;
+justify-content:center;
+}
+
+.tag{
+padding:10px 18px;
+border-radius:30px;
+background:#111;
+border:1px solid #222;
+font-size:13px;
+}
+
+/* SECTIONS */
+
+.section{
+position:relative;
+padding:80px 60px;
+max-width:1000px;
+margin:40px auto;
+border-radius:24px;
+overflow:hidden;
+
+opacity:0;
+transform:translateY(50px);
+transition:0.8s cubic-bezier(.2,.8,.2,1);
+
+background:linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+}
+
+.section.active{
+opacity:1;
+transform:translateY(0);
+}
+
+.section h2{
+font-size:34px;
+margin-bottom:18px;
+font-family:Playfair Display;
+}
+
+.section p{
+opacity:0.85;
+line-height:1.9;
+font-size:15px;
+}
+
+/* FULL IMAGE */
+
+.full-image{
+margin-top:35px;
+}
+
+.full-image img{
+width:100%;
+border-radius:18px;
+border:1px solid #222;
+}
+
+/* MOBILE FRAME */
+
+.phone-frame{
+width:300px;
+height:600px;
+margin:40px auto;
+padding:12px;
+border-radius:34px;
+background:#111;
+box-shadow:0 20px 60px rgba(0,0,0,0.8);
+border:1px solid #222;
+}
+
+.phone-screen{
+width:100%;
+height:100%;
+overflow-y:auto;
+border-radius:24px;
+}
+
+.phone-screen img{
+width:100%;
+}
+
+/* FOOTER */
+
+.footer{
+text-align:center;
+padding:80px 20px;
+}
+
+.footer h2{
+font-size:32px;
+margin-bottom:20px;
+font-family:Playfair Display;
+}
+
+.footer a{
+text-decoration:none;
+color:#fff;
+border:1px solid #444;
+padding:14px 26px;
+border-radius:40px;
+display:inline-block;
+transition:0.3s;
+}
+
+.footer a:hover{
+background:#fff;
+color:#000;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero-card h1{
+font-size:38px;
+}
+
+.section{
+padding:50px 24px;
+}
+
+.phone-frame{
+width:100%;
+max-width:280px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<a href="index.html" class="back">← Back</a>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<div class="hero-card">
+
+<h1>Milky Mist Landing Page</h1>
+
+<p class="tagline">
+Designing a premium, conversion-focused dessert experience
+</p>
+
+<div class="tags">
+<div class="tag">Landing Page</div>
+<div class="tag">UI Design</div>
+<div class="tag">Responsive Design</div>
+<div class="tag">Figma</div>
+<div class="tag">Conversion UX</div>
+</div>
+
+<div class="hero-buttons">
+<a href="#content" class="btn primary">View Case Study ↓</a>
+</div>
+
+</div>
+
+</div>
+
+<!-- CONTENT -->
+
+<div id="content">
+
+<!-- OVERVIEW -->
+
+<div class="section">
+
+<h2>Overview</h2>
+
+<p>
+Designed a landing page focused on conversion, clarity, and premium visual appeal.
+Handled mismatch between ice cream brief and chocolate assets by maintaining a unified dessert theme while preserving strong visual consistency.
+</p>
+
+</div>
+
+<!-- PROBLEM -->
+
+<div class="section">
+
+<h2>Problem</h2>
+
+<p>
+The original brief required an ice cream landing page, but the provided visual assets were chocolate-focused.
+This created inconsistency between product direction, messaging, and visual storytelling.
+The challenge was to maintain clarity while still delivering a premium dessert experience.
+</p>
+
+</div>
+
+<!-- GOALS -->
+
+<div class="section">
+
+<h2>Goals</h2>
+
+<p>
+• Create a visually premium landing page<br>
+• Improve product hierarchy and readability<br>
+• Design stronger CTA sections for conversion<br>
+• Ensure responsive mobile experience<br>
+• Maintain cohesive dessert branding throughout
+</p>
+
+</div>
+
+<!-- DESIGN APPROACH -->
+
+<div class="section">
+
+<h2>Design Approach</h2>
+
+<p>
+The interface was designed using structured sections, minimal clutter, and strong typography hierarchy.
+A premium “Single Origin” storytelling section was introduced to enhance product perception and improve emotional engagement with the brand.
+</p>
+
+</div>
+
+<!-- DESKTOP DESIGN -->
+
+<div class="section">
+
+<h2>Final Desktop Design</h2>
+
+<p>
+The desktop experience focused on premium spacing, strong hero presentation, and conversion-focused product storytelling with modern visual hierarchy.
+</p>
+
+<div class="full-image">
+<img src="Milkymist-screen2.png">
+</div>
+
+</div>
+
+<!-- MOBILE DESIGN -->
+
+<div class="section">
+
+<h2>Mobile Design</h2>
+
+<p>
+The mobile version was designed with responsive layouts, simplified spacing, and clear CTA visibility to maintain usability across smaller screens.
+</p>
+
+<div class="phone-frame">
+
+<div class="phone-screen">
+<img src="Milkymist-screen1.png">
+</div>
+
+</div>
+
+</div>
+
+<!-- IMPROVEMENTS -->
+
+<div class="section">
+
+<h2>Key Improvements</h2>
+
+<p>
+• Improved content hierarchy for easier scanning<br>
+• Strong CTA placement for conversion-focused flow<br>
+• Premium product storytelling sections<br>
+• Balanced product imagery and information<br>
+• Better readability and responsive layout handling
+</p>
+
+</div>
+
+<!-- UX THINKING -->
+
+<div class="section">
+
+<h2>UX Thinking</h2>
+
+<p>
+The experience was designed to guide users naturally from discovery to action through clear visual hierarchy, strategic spacing, and minimal distractions.
+The overall goal was to create a premium browsing experience that feels elegant while still remaining conversion-focused.
+</p>
+
+</div>
+
+<!-- LEARNING -->
+
+<div class="section">
+
+<h2>What I Learned</h2>
+
+<p>
+This project helped strengthen my understanding of landing page UX, visual storytelling, responsive layouts, and conversion-focused design thinking.
+I also explored balancing branding consistency while adapting to asset limitations.
+</p>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+<h2>Back to Portfolio</h2>
+
+<a href="index.html">View Other Projects</a>
+
+</div>
+
+<script>
+
+/* PROGRESS BAR */
+
+window.addEventListener("scroll",()=>{
+
+let scrollTop=document.documentElement.scrollTop;
+
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+
+document.getElementById("progressBar").style.width=(scrollTop/height)*100+"%";
+
+});
+
+/* SCROLL REVEAL */
+
+const sections=document.querySelectorAll(".section");
+
+window.addEventListener("scroll",()=>{
+
+const trigger=window.innerHeight*0.85;
+
+sections.forEach(sec=>{
+
+if(sec.getBoundingClientRect().top<trigger){
+
+sec.classList.add("active");
+
+}
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
