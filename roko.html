@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ro-Ko Era | Kaviya</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<rect width='100' height='100' rx='24' fill='%23007BFF'/>
+<path d='M35 70 L65 30' stroke='white' stroke-width='10' stroke-linecap='round'/>
+<circle cx='68' cy='28' r='10' fill='%23FFCC00'/>
+</svg>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Poppins,sans-serif;
+
+  background:
+  radial-gradient(circle at top left, rgba(124,58,237,0.15), transparent 30%),
+  radial-gradient(circle at bottom right, rgba(59,130,246,0.12), transparent 30%),
+  #000;
+
+  color:white;
+
+  overflow-x:hidden;
+}
+
+/* NAV */
+
+nav{
+  position:fixed;
+
+  width:100%;
+
+  padding:24px 70px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  backdrop-filter:blur(18px);
+
+  background:rgba(0,0,0,0.45);
+
+  border-bottom:1px solid rgba(255,255,255,0.05);
+
+  z-index:1000;
+}
+
+nav h2{
+  font-size:38px;
+
+  font-family:'Playfair Display',serif;
+}
+
+nav a{
+  color:white;
+
+  text-decoration:none;
+
+  opacity:0.7;
+
+  transition:0.3s;
+}
+
+nav a:hover{
+  opacity:1;
+}
+
+/* HERO */
+
+.hero{
+  padding:
+  160px 70px
+  100px;
+
+  max-width:1400px;
+
+  margin:auto;
+}
+
+.hero-grid{
+  display:grid;
+
+  grid-template-columns:
+  1.1fr
+  0.9fr;
+
+  gap:60px;
+
+  align-items:center;
+}
+
+/* IMAGE */
+
+.thumbnail-box{
+  position:relative;
+
+  border-radius:34px;
+
+  overflow:hidden;
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+  0 30px 80px rgba(0,0,0,0.45);
+}
+
+.thumbnail-box img{
+  width:100%;
+
+  display:block;
+}
+
+/* CONTENT */
+
+.case-tag{
+  display:inline-block;
+
+  padding:10px 18px;
+
+  border-radius:999px;
+
+  background:
+  rgba(124,58,237,0.15);
+
+  color:#c4b5fd;
+
+  font-size:13px;
+
+  margin-bottom:24px;
+}
+
+.hero h1{
+  font-size:72px;
+
+  line-height:1;
+
+  letter-spacing:-3px;
+
+  margin-bottom:26px;
+
+  font-family:'Space Grotesk',sans-serif;
+}
+
+.hero p{
+  color:
+  rgba(255,255,255,0.72);
+
+  line-height:1.9;
+
+  font-size:17px;
+}
+
+/* SECTION */
+
+.content-section{
+  padding:40px 70px 100px;
+
+  max-width:1400px;
+
+  margin:auto;
+}
+
+.grid{
+  display:grid;
+
+  grid-template-columns:
+  repeat(2,1fr);
+
+  gap:34px;
+
+  margin-top:40px;
+}
+
+.card{
+  padding:38px;
+
+  border-radius:30px;
+
+  background:
+  linear-gradient(
+    145deg,
+    rgba(255,255,255,0.06),
+    rgba(255,255,255,0.02)
+  );
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(18px);
+
+  transition:0.4s ease;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+
+  border-color:
+  rgba(255,255,255,0.16);
+}
+
+.card h3{
+  font-size:30px;
+
+  margin-bottom:18px;
+
+  font-family:'Space Grotesk',sans-serif;
+}
+
+.card p{
+  color:
+  rgba(255,255,255,0.72);
+
+  line-height:1.9;
+
+  font-size:15px;
+}
+
+/* FULL WIDTH CARD */
+
+.full-card{
+  margin-top:34px;
+
+  padding:44px;
+
+  border-radius:34px;
+
+  background:
+  linear-gradient(
+    145deg,
+    rgba(255,255,255,0.06),
+    rgba(255,255,255,0.02)
+  );
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+}
+
+.full-card h2{
+  font-size:42px;
+
+  margin-bottom:22px;
+
+  font-family:'Space Grotesk',sans-serif;
+}
+
+.full-card p{
+  color:
+  rgba(255,255,255,0.74);
+
+  line-height:2;
+
+  font-size:16px;
+}
+
+/* TAGS */
+
+.tags{
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:12px;
+
+  margin-top:28px;
+}
+
+.tags span{
+  padding:10px 16px;
+
+  border-radius:999px;
+
+  background:
+  rgba(255,255,255,0.05);
+
+  border:
+  1px solid rgba(255,255,255,0.06);
+
+  color:
+  rgba(255,255,255,0.72);
+
+  font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  nav{
+    padding:20px;
+  }
+
+  .hero{
+    padding:
+    130px 20px
+    70px;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .content-section{
+    padding:20px 20px 80px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .card,
+  .full-card{
+    padding:28px 22px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h2>Kaviya</h2>
+
+  <a href="index.html">
+    ← Back to Portfolio
+  </a>
+</nav>
+
+<section class="hero">
+
+<div class="hero-grid">
+
+  <!-- IMAGE -->
+
+  <div class="thumbnail-box">
+    <img src="sports-thumbnail.png">
+  </div>
+
+  <!-- CONTENT -->
+
+  <div>
+
+    <span class="case-tag">
+      Sports Thumbnail Design
+    </span>
+
+    <h1>Ro-Ko Era</h1>
+
+    <p>
+      This concept was designed to capture one of the most emotional and iconic moments in Indian cricket history — celebrating Rohit Sharma and Virat Kohli after India’s historic T20 World Cup victory.
+      <br><br>
+      Rather than creating a standard sports edit, the goal was to make the thumbnail feel cinematic, nostalgic, and instantly recognizable even at mobile scale.
+    </p>
+
+    <div class="tags">
+      <span>Sports Design</span>
+      <span>Typography</span>
+      <span>Visual Storytelling</span>
+      <span>Thumbnail Design</span>
+      <span>Color Psychology</span>
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+<section class="content-section">
+
+<div class="grid">
+
+  <!-- EMOTION -->
+
+  <div class="card">
+
+    <h3>Emotion & Legacy</h3>
+
+    <p>
+      The central image of Rohit Sharma and Virat Kohli holding the trophy together represents more than celebration — it symbolizes legacy, nostalgia, and the emotional end of an iconic cricket era.
+      <br><br>
+      Their expressions were intentionally kept as the strongest visual focus to create an immediate emotional connection with viewers and fans.
+    </p>
+
+  </div>
+
+  <!-- TYPOGRAPHY -->
+
+  <div class="card">
+
+    <h3>Typography Strategy</h3>
+
+    <p>
+      The title “Ro-Ko Era” was intentionally kept short, bold, and highly recognizable for maximum readability across YouTube and mobile screens.
+      <br><br>
+      Heavy shadow styling and layered text depth were used to separate the typography from the visually busy sports background while maintaining strong visual impact.
+    </p>
+
+  </div>
+
+  <!-- COLORS -->
+
+  <div class="card">
+
+    <h3>Color Psychology</h3>
+
+    <p>
+      The saffron-orange tones connect directly to the Indian flag and jersey accents, reinforcing national pride and emotional familiarity.
+      <br><br>
+      White typography creates contrast and balance, while neon yellow-green accents were introduced strategically because they naturally attract human attention on digital screens and improve click visibility.
+    </p>
+
+  </div>
+
+  <!-- COMPOSITION -->
+
+  <div class="card">
+
+    <h3>Layout & Composition</h3>
+
+    <p>
+      The trophy was positioned centrally to visually unite both players and anchor the composition.
+      <br><br>
+      Blurred background collage elements were added to create cinematic storytelling without distracting from the primary subjects. Framing graphics and directional balance help guide the eye naturally through the design.
+    </p>
+
+  </div>
+
+</div>
+
+<!-- AI PROMPT -->
+
+<div class="full-card">
+
+  <h2>Creative Direction & AI Prompt</h2>
+
+  <p>
+    A high-energy, emotionally charged sports celebration poster featuring Indian cricketers Virat Kohli and Rohit Sharma standing side by side, smiling widely. They are draped in a large Indian national flag covering their shoulders, holding the silver T20 World Cup trophy together between them.
+    <br><br>
+    Both are wearing the official blue and orange Indian cricket team jersey with winner medals around their necks. The background is a soft-focus cinematic collage of iconic victory moments including trophy celebrations, emotional embraces, and stadium lighting.
+    <br><br>
+    The overall aesthetic focuses on cinematic lighting, heroic composition, emotional storytelling, and premium sports documentary styling with sharp facial details and dramatic contrast.
+  </p>
+
+</div>
+
+</section>
+
+</body>
+</html>
+```
