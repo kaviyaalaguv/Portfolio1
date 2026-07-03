@@ -1505,8 +1505,11 @@ glow.style.top=e.clientY+"px";
 });
 
 /* TEXT LOOP */
-const words=["UI/UX Designer","Frontend Learner","Problem Solver"];
-let i=0;
+const words = [
+  "UI/UX Designer",
+  "Visual Designer",
+  "Brand Designer"
+];let i=0;
 setInterval(()=>{
 document.getElementById("textLoop").innerText=words[i];
 i=(i+1)%words.length;
