@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contexa | Case Study</title>
+
+<link rel="icon" type="image/png" href="contexa-icon.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#050505;
+    color:#fff;
+    overflow-x:hidden;
+    line-height:1.8;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* Scroll Progress */
+
+.progress-bar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:4px;
+    background:#2563EB;
+    z-index:9999;
+}
+
+/* Back Button */
+
+.back{
+    position:fixed;
+    top:22px;
+    left:22px;
+    color:#fff;
+    opacity:.7;
+    font-size:15px;
+    z-index:1000;
+    transition:.3s;
+}
+
+.back:hover{
+    opacity:1;
+}
+
+/* Project Header */
+
+.project-header{
+    max-width:900px;
+    margin:120px auto 80px;
+    padding:0 30px;
+    text-align:center;
+}
+
+.project-header h1{
+    font-family:'Playfair Display',serif;
+    font-size:64px;
+    margin-bottom:20px;
+}
+
+.project-header p{
+    font-size:18px;
+    opacity:.82;
+    max-width:760px;
+    margin:auto;
+    line-height:1.9;
+}
+
+/* Buttons */
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin-top:40px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    position:relative;
+    overflow:hidden;
+    padding:15px 30px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn.primary{
+    background:#2563EB;
+    color:#fff;
+}
+
+.btn.primary:hover{
+    background:#1D4ED8;
+    transform:translateY(-2px);
+}
+
+.btn.secondary{
+    border:1px solid rgba(255,255,255,.25);
+    color:#fff;
+}
+
+.btn.secondary:hover{
+    background:#fff;
+    color:#000;
+    transform:translateY(-2px);
+}
+
+/* Ripple */
+
+.btn span{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.3);
+    transform:scale(0);
+    animation:ripple .6s linear;
+}
+
+@keyframes ripple{
+    to{
+        transform:scale(4);
+        opacity:0;
+    }
+}
+
+/* Sections */
+
+.section{
+    position:relative;
+    max-width:1100px;
+    margin:60px auto;
+    padding:70px 60px;
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.05),
+        rgba(255,255,255,.025)
+    );
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    backdrop-filter:blur(12px);
+    opacity:0;
+    transform:translateY(50px);
+    transition:.8s cubic-bezier(.2,.8,.2,1);
+    overflow:hidden;
+}
+
+.section.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.section:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 70px rgba(255,255,255,.05);
+}
+
+.section::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:40px;
+    width:4px;
+    height:70px;
+    background:linear-gradient(
+        to bottom,
+        #2563EB,
+        transparent
+    );
+    border-radius:2px;
+}
+
+.section h2{
+    font-family:'Playfair Display',serif;
+    font-size:38px;
+    margin-bottom:20px;
+}
+
+.section p{
+    font-size:16px;
+    opacity:.85;
+    max-width:850px;
+}
+
+/* Images */
+
+.img{
+    width:100%;
+    margin-top:35px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    transition:.4s;
+}
+
+.img:hover{
+    transform:scale(1.02);
+}
+
+/* Footer */
+
+.footer{
+    text-align:center;
+    padding:90px 20px;
+}
+
+.footer h2{
+    font-family:'Playfair Display',serif;
+    font-size:34px;
+    margin-bottom:25px;
+}
+
+.footer a{
+    display:inline-block;
+    padding:15px 30px;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:999px;
+    transition:.3s;
+}
+
+.footer a:hover{
+    background:#fff;
+    color:#000;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .project-header{
+        margin:90px auto 60px;
+        padding:0 20px;
+    }
+
+    .project-header h1{
+        font-size:42px;
+    }
+
+    .project-header p{
+        font-size:16px;
+    }
+
+    .section{
+        margin:40px 16px;
+        padding:45px 24px;
+    }
+
+    .section h2{
+        font-size:30px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<a href="index.html" class="back">← Back</a>
+
+<!-- HERO -->
+<header class="project-header">
+
+<h1>Contexa</h1>
+
+<p>
+
+An AI-powered meeting workspace that transforms meetings into AI
+summaries, searchable transcripts, action items, and team knowledge.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#content" class="btn primary">
+View Case Study ↓
+</a>
+
+<a href="https://www.figma.com/design/2vIPgWFmIiCLp4xb41S8AG/Contexa?node-id=19-595&t=k1Z2gmhIZAXfRQFv-1"
+target="_blank"
+class="btn secondary">
+Live Prototype
+</a>
+
+</div>
+
+</header>
+
+<!-- CONTENT -->
+
+<div id="content">
+
+<div class="section">
+
+<h2>Overview</h2>
+
+<p>
+
+Contexa is an AI-powered meeting workspace that integrates with Zoom,
+Google Meet, and Microsoft Teams to automatically transform meetings
+into organized knowledge. Instead of manually reviewing recordings,
+teams receive AI-generated summaries, action items, searchable
+transcripts, and contextual answers in one collaborative workspace.
+
+</p>
+
+</div>
+<div class="section">
+
+<h2>Problem</h2>
+
+<p>
+
+Teams spend countless hours revisiting meeting recordings, searching
+through scattered notes, and following up on missed action items.
+Important decisions often become buried across documents, chats, and
+emails, making collaboration slow and knowledge difficult to retrieve.
+
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>Goal</h2>
+
+<p>
+
+Design a clean enterprise SaaS experience that enables users to
+understand meeting outcomes within seconds, collaborate efficiently,
+and retrieve organizational knowledge instantly using AI.
+
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>Design Approach</h2>
+
+<p>
+
+The interface was intentionally designed around clarity rather than
+feature density. Every screen prioritizes readability, generous
+whitespace, consistent spacing, and familiar document-style layouts
+inspired by products like Notion, Linear, and Vercel.
+
+<br><br>
+
+The experience focuses on:
+
+<br><br>
+
+• AI-first workflows<br>
+• Large whitespace<br>
+• Fast information retrieval<br>
+• Clear visual hierarchy<br>
+• Consistent design system<br>
+• Enterprise-grade usability
+
+</p>
+
+</div>
+<div class="section">
+
+<h2>Landing Page</h2>
+
+<p>
+
+The landing page introduces Contexa through a clean, product-first
+marketing experience. The design emphasizes the value proposition with
+clear messaging, generous whitespace, modern typography, and focused
+call-to-actions inspired by premium enterprise SaaS products.
+
+</p>
+
+<img class="img"
+src="contexa-screen1.png"
+alt="Contexa Landing Page">
+
+</div>
+
+<div class="section">
+
+<h2>Onboarding Experience</h2>
+
+<p>
+
+The onboarding flow minimizes friction by allowing users to quickly
+sign in and connect their preferred meeting platforms including
+Google Meet, Zoom, and Microsoft Teams before entering the workspace.
+
+</p>
+
+<img class="img"
+src="contexa-screen2.png"
+alt="Contexa Onboarding Screen">
+
+</div>
+<div class="section">
+
+<h2>Meeting Workspace</h2>
+
+<p>
+
+The Meeting Workspace is the core experience of Contexa. It brings
+together AI-generated summaries, key decisions, action items,
+participants, transcripts, and contextual AI assistance within a
+single distraction-free interface. The layout was designed to feel
+familiar to users of modern document-based tools while keeping
+important information easy to scan.
+
+</p>
+
+<img class="img"
+src="contexa-screen3.png"
+alt="Meeting Workspace">
+
+</div>
+
+<div class="section">
+
+<h2>AI Chat Assistant</h2>
+
+<p>
+
+The AI Chat interface enables users to ask natural language questions
+about previous meetings and instantly receive contextual answers,
+summaries, decisions, and follow-up suggestions without searching
+through long transcripts manually.
+
+</p>
+
+<img class="img"
+src="contexa-screen4.png"
+alt="AI Chat">
+
+</div>
+<div class="section">
+
+<h2>Universal Search</h2>
+
+<p>
+
+The universal search experience allows users to instantly find meetings,
+tasks, people, projects, and transcripts from a single interface.
+Results are grouped logically, making information retrieval fast and
+reducing the time spent navigating between multiple pages.
+
+</p>
+
+<img class="img"
+src="contexa-screen5.png"
+alt="Universal Search">
+
+</div>
+
+<div class="section">
+
+<h2>Dashboard</h2>
+
+<p>
+
+The dashboard provides a focused overview of today's meetings, recent
+AI summaries, and pending action items. Rather than overwhelming users
+with charts or analytics, it presents only the information needed to
+start the workday efficiently.
+
+</p>
+
+<img class="img"
+src="contexa-screen6.png"
+alt="Dashboard">
+
+</div>
+
+<div class="section">
+
+<h2>Design System</h2>
+
+<p>
+
+The interface follows a minimal enterprise design language with
+consistent spacing, rounded components, accessible typography,
+subtle shadows, and reusable UI patterns that ensure visual
+consistency across every screen.
+
+</p>
+</div>
+
+<div class="section">
+
+<h2>Key UX Decisions</h2>
+
+<p>
+
+• Prioritized readability over visual complexity.<br><br>
+
+• Designed AI as a contextual assistant instead of a separate
+experience.<br><br>
+
+• Reduced navigation depth to improve discoverability.<br><br>
+
+• Used generous whitespace to lower cognitive load.<br><br>
+
+• Maintained a consistent spacing system and card layout across
+every screen.<br><br>
+
+• Focused on document-style layouts familiar to modern knowledge
+workers.
+
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>Outcome</h2>
+
+<p>
+
+Contexa demonstrates how AI can become a natural extension of meeting
+workflows rather than simply generating summaries. The concept combines
+meeting documentation, collaboration, search, and AI assistance into a
+single scalable workspace suitable for modern enterprise teams.
+
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>What I Learned</h2>
+
+<p>
+
+Designing Contexa strengthened my understanding of enterprise SaaS
+products, AI-assisted user experiences, information architecture,
+design systems, and creating interfaces that balance functionality
+with simplicity.
+
+</p>
+
+</div>
+</div>
+
+<footer class="footer">
+
+<h2>Thank You for Viewing</h2>
+
+<a href="index.html">
+
+Back to Portfolio
+
+</a>
+
+</footer>
+
+<script>
+
+/* Scroll Progress */
+
+window.addEventListener("scroll",()=>{
+
+const scrollTop=document.documentElement.scrollTop;
+
+const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+
+document.getElementById("progressBar").style.width=(scrollTop/height)*100+"%";
+
+});
+
+/* Scroll Reveal */
+
+const sections=document.querySelectorAll(".section");
+
+window.addEventListener("scroll",()=>{
+
+const trigger=window.innerHeight*0.85;
+
+sections.forEach(section=>{
+
+if(section.getBoundingClientRect().top<trigger){
+
+section.classList.add("active");
+
+}
+
+});
+
+});
+
+/* Reveal first section */
+
+window.dispatchEvent(new Event("scroll"));
+
+/* Ripple Effect */
+
+document.querySelectorAll(".btn").forEach(button=>{
+
+button.addEventListener("click",function(e){
+
+const ripple=document.createElement("span");
+
+const rect=this.getBoundingClientRect();
+
+const size=Math.max(rect.width,rect.height);
+
+ripple.style.width=size+"px";
+
+ripple.style.height=size+"px";
+
+ripple.style.left=(e.clientX-rect.left-size/2)+"px";
+
+ripple.style.top=(e.clientY-rect.top-size/2)+"px";
+
+this.appendChild(ripple);
+
+setTimeout(()=>{
+
+ripple.remove();
+
+},600);
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>
