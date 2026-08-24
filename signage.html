@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospitality Signage Catalogue Case Study</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2300c6ff'/%3E%3Cstop offset='100%25' stop-color='%230072ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='46' fill='url(%23g)'/%3E%3Ccircle cx='50' cy='50' r='24' fill='white' opacity='0.18'/%3E%3Cpath d='M34 52 L46 64 L68 38' stroke='white' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Poppins;
+background:#000;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* SCROLL BAR */
+
+.progress-bar{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+width:0%;
+background:#2563EB;
+z-index:2000;
+}
+
+/* BACK */
+
+.back{
+position:fixed;
+top:20px;
+left:20px;
+text-decoration:none;
+color:#fff;
+opacity:0.7;
+z-index:1000;
+}
+
+.back:hover{
+opacity:1;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:40px;
+background:
+linear-gradient(rgba(0,0,0,0.72),rgba(0,0,0,0.82)),
+url('signage1_2.png');
+
+background-size:cover;
+background-position:center;
+}
+
+/* HERO CARD */
+
+.hero-card{
+position:relative;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(20px);
+padding:40px;
+border-radius:24px;
+text-align:center;
+max-width:720px;
+width:100%;
+overflow:hidden;
+box-shadow:0 20px 60px rgba(0,0,0,0.6);
+transition:0.4s;
+}
+
+.hero-card:hover{
+transform:translateY(-6px) scale(1.01);
+}
+
+/* SHINE */
+
+.hero-card::before{
+content:"";
+position:absolute;
+top:0;
+left:-75%;
+width:50%;
+height:100%;
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.15),
+transparent
+);
+transform:skewX(-20deg);
+}
+
+.hero-card:hover::before{
+animation:shine 1s;
+}
+
+@keyframes shine{
+100%{
+left:125%;
+}
+}
+
+/* HERO IMAGE */
+
+.hero-img{
+width:100%;
+border-radius:18px;
+margin-bottom:30px;
+border:1px solid #222;
+}
+
+/* TITLE */
+
+.hero-card h1{
+font-size:46px;
+font-family:Playfair Display;
+}
+
+/* TAGLINE */
+
+.tagline{
+margin-top:15px;
+opacity:0.8;
+font-size:16px;
+line-height:1.8;
+}
+
+/* TAGS */
+
+.tags{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+margin-top:25px;
+justify-content:center;
+}
+
+.tag{
+padding:10px 18px;
+border-radius:30px;
+background:#111;
+border:1px solid #222;
+font-size:13px;
+}
+
+/* BUTTONS */
+
+.hero-buttons{
+margin-top:30px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.btn{
+position:relative;
+overflow:hidden;
+padding:14px 24px;
+border-radius:30px;
+text-decoration:none;
+font-size:14px;
+cursor:pointer;
+transition:0.3s;
+display:inline-block;
+}
+
+.btn.primary{
+background:#2563EB;
+color:#fff;
+}
+
+.btn.primary:hover{
+background:#1D4ED8;
+}
+
+.btn.secondary{
+border:1px solid #fff;
+color:#fff;
+}
+
+.btn.secondary:hover{
+background:#fff;
+color:#000;
+}
+
+/* RIPPLE */
+
+.btn span{
+position:absolute;
+background:rgba(255,255,255,0.3);
+transform:scale(0);
+border-radius:50%;
+animation:ripple 0.6s linear;
+}
+
+@keyframes ripple{
+to{
+transform:scale(4);
+opacity:0;
+}
+}
+
+/* SECTIONS */
+
+.section{
+position:relative;
+padding:80px 60px;
+max-width:1000px;
+margin:40px auto;
+border-radius:24px;
+overflow:hidden;
+
+opacity:0;
+transform:translateY(50px);
+transition:0.8s cubic-bezier(.2,.8,.2,1);
+
+background:linear-gradient(
+145deg,
+rgba(255,255,255,0.05),
+rgba(255,255,255,0.02)
+);
+
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+}
+
+/* ALT DEPTH */
+
+.section:nth-child(even){
+background:linear-gradient(
+145deg,
+rgba(255,255,255,0.02),
+rgba(255,255,255,0.06)
+);
+}
+
+/* REVEAL */
+
+.section.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ACCENT */
+
+.section::before{
+content:"";
+position:absolute;
+left:0;
+top:30px;
+width:4px;
+height:60px;
+background:linear-gradient(to bottom,#2563EB,transparent);
+border-radius:2px;
+}
+
+/* HOVER */
+
+.section:hover{
+transform:translateY(-6px) scale(1.01);
+box-shadow:0 25px 80px rgba(255,255,255,0.08);
+}
+
+/* TEXT */
+
+.section h2{
+font-size:34px;
+margin-bottom:18px;
+font-family:Playfair Display;
+}
+
+.section p{
+opacity:0.85;
+line-height:1.9;
+font-size:15px;
+}
+
+/* COMPACT IMAGE CONTAINER FOR MONITORS */
+
+.img-container{
+width:100%;
+margin-top:25px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:rgba(0,0,0,0.4);
+padding:20px;
+border-radius:18px;
+border:1px solid #222;
+cursor:pointer;
+position:relative;
+}
+
+.img-container::after{
+content:"🔍 Click to enlarge";
+position:absolute;
+bottom:15px;
+right:20px;
+background:rgba(0,0,0,0.7);
+color:#fff;
+font-size:12px;
+padding:6px 12px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.2);
+opacity:0;
+transition:0.3s;
+pointer-events:none;
+}
+
+.img-container:hover::after{
+opacity:1;
+}
+
+.img{
+max-width:100%;
+max-height:520px;
+width:auto;
+height:auto;
+object-fit:contain;
+border-radius:8px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+transition:0.4s;
+}
+
+.img-container:hover .img{
+transform:scale(1.02);
+}
+
+/* LIGHTBOX MODAL */
+
+.lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100vw;
+height:100vh;
+background:rgba(0,0,0,0.92);
+backdrop-filter:blur(10px);
+z-index:3000;
+display:flex;
+align-items:center;
+justify-content:center;
+opacity:0;
+pointer-events:none;
+transition:opacity 0.3s ease;
+padding:20px;
+}
+
+.lightbox.active{
+opacity:1;
+pointer-events:all;
+}
+
+.lightbox-img{
+max-width:90vw;
+max-height:90vh;
+object-fit:contain;
+border-radius:8px;
+box-shadow:0 20px 50px rgba(0,0,0,0.8);
+transform:scale(0.95);
+transition:transform 0.3s ease;
+}
+
+.lightbox.active .lightbox-img{
+transform:scale(1);
+}
+
+.lightbox-close{
+position:absolute;
+top:25px;
+right:30px;
+font-size:38px;
+color:#fff;
+cursor:pointer;
+background:rgba(255,255,255,0.1);
+width:50px;
+height:50px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+border:1px solid rgba(255,255,255,0.2);
+transition:0.3s;
+user-select:none;
+}
+
+.lightbox-close:hover{
+background:#2563EB;
+border-color:#2563EB;
+transform:scale(1.1);
+}
+
+/* FOOTER */
+
+.footer{
+text-align:center;
+padding:80px 20px;
+}
+
+.footer h2{
+font-size:32px;
+margin-bottom:20px;
+font-family:Playfair Display;
+}
+
+.footer a{
+text-decoration:none;
+color:#fff;
+border:1px solid #444;
+padding:14px 26px;
+border-radius:40px;
+display:inline-block;
+transition:0.3s;
+}
+
+.footer a:hover{
+background:#fff;
+color:#000;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero-card{
+padding:30px 24px;
+}
+
+.hero-card h1{
+font-size:32px;
+}
+
+.section{
+padding:50px 24px;
+}
+
+.tags{
+justify-content:center;
+}
+
+.img-container{
+padding:10px;
+}
+
+.img{
+max-height:none;
+width:100%;
+}
+
+.lightbox-close{
+top:15px;
+right:15px;
+width:40px;
+height:40px;
+font-size:28px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<a href="index.html" class="back">← Back</a>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<div class="hero-card">
+
+<h1>Hospitality Signage Catalogue</h1>
+
+<p class="tagline">
+Wayfinding & Regulatory Catalogue Design · Graphic Design Internship · United Hotel Supply
+</p>
+
+<!-- TAGS -->
+
+<div class="tags">
+<div class="tag">Graphic Design</div>
+<div class="tag">Wayfinding Systems</div>
+<div class="tag">United Hotel Supply</div>
+<div class="tag">ADA & Safety Standards</div>
+<div class="tag">Technical Layout</div>
+<div class="tag">Vector Graphics</div>
+</div>
+
+<div class="hero-buttons">
+
+<a href="#content" class="btn primary">
+View Case Study ↓
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CONTENT -->
+
+<div id="content">
+
+<div class="section">
+
+<h2>Project Overview</h2>
+
+<p>
+<strong>Role:</strong> Graphic Designer Intern<br>
+<strong>Company:</strong> United Hotel Supply<br>
+<strong>Project Type:</strong> Architectural Signage & Technical Catalog Sheets<br>
+<strong>Responsibilities:</strong> Layout architecture, material callout diagramming, part number indexing, symbol vector styling, and accessibility compliance formatting.
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>The Brief</h2>
+
+<p>
+Develop a comprehensive catalog series for hotel architectural signage. The sheets needed to clearly organize guest room numbers, directional wayfinding markers, ADA-compliant accessibility symbols, and regulatory in-room safety plaques for commercial hotel developments.
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>The Design Challenge</h2>
+
+<p>
+Hospitality signage involves dense technical parameters—such as acrylic material layer callouts, exact millimeter and inch dimensions, grade II tactile braille, and standardized ADA symbols (ISA & Hearing Impaired). The main challenge was maintaining a clean grid structure across varying sign dimensions while displaying SKU part numbers unambiguously.
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>My Role & Responsibilities</h2>
+
+<p>
+• Engineered consistent sheet templates featuring standardized red header banners and light blue backgrounds.<br>
+• Created technical schematic callouts diagramming material layers (P95 Matte acrylic, raised copy, Grade II Bead Braille, and Wilsonart laminate).<br>
+• Organized product grids with clear part numbers, dimension callouts, and icon variations.<br>
+• Designed vector icon badges for accessibility options (ISA wheel chair symbol, hearing impairment, and non-smoking icons).<br>
+• Formatted emergency evacuation plan templates and warning plaque diagrams to legal and safety standards.
+</p>
+
+</div>
+
+<!-- VISUAL BREAKDOWN SECTIONS -->
+
+<div class="section">
+
+<h2>01 — Tactile Room Numbering System (P95 Acrylic Series)</h2>
+
+<p>
+Features the core room numbering scheme with detailed engineering callouts (Part# CWS19-1000). Includes technical callouts for 1/8" P95 Matte Clear Acrylic, 1-1/2" raised lettering in PMS 9186, Clear Grade II Bead Braille, and Wilsonart Palisades Oak Laminate accents. Sub-variants highlight ISA and Hearing Impaired symbol integration.
+</p>
+
+<div class="img-container">
+  <img class="img" src="signage1.png" alt="Room Numbers Technical Diagram and ADA Variants">
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>02 — In-Room Regulatory & Safety Signage</h2>
+
+<p>
+Covers essential guest room compliance signs, including 8.5"×11" printed evacuation maps (Part# SC-1226), curved deadbolt directional indicators, sprinkler prohibition safety stickers, and eco-friendly towel reuse station cards with customizable branding.
+</p>
+
+<div class="img-container">
+  <img class="img" src="signage2.png" alt="In Room Safety and Evacuation Signage Catalog">
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>03 — Wayfinding & Directional Navigation Systems</h2>
+
+<p>
+Presents a complete line of directional signs ranging from 2-line small hallway markers to 10-line comprehensive lobby directional boards (REI20 Series). Features standardized typography, clear directional arrow iconography, and wall-mounted flag sign layouts.
+</p>
+
+<div class="img-container">
+  <img class="img" src="signage3.png" alt="Directional Wayfinding Signage Catalog Sheet">
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>04 — Modern Rounded Room Number Series</h2>
+
+<p>
+Demonstrates a contemporary curved-corner aesthetic (HDI124 Series) available in dark slate grey and light sand tones. Showcases multiple icon configurations including No Smoking, Accessibility (ISA), and Hearing Impaired combination badges.
+</p>
+
+<div class="img-container">
+  <img class="img" src="signage4.png" alt="Modern Rounded Room Numbers with Icons">
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>05 — Emergency Evacuation & Guest Warning Plaques</h2>
+
+<p>
+Highlights large-format emergency evacuation notices (23"×10" Part# TWP2019-1226) displaying California Civil Codes alongside fire and safety instructions. Also features compact balcony lock warnings, in-room safe instructions, and sprinkler safety decals.
+</p>
+
+<div class="img-container">
+  <img class="img" src="signage5.png" alt="Emergency Evacuation and Safety Warning Plaques">
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>What I Learned</h2>
+
+<p>
+• Precise technical callout diagrams are critical for hotel developers and installation contractors.<br>
+• Strict alignment systems allow dense catalog sheets with dozens of SKUs to remain easily scannable.<br>
+• Standardizing symbol placement (ADA, ISA, Hearing Impaired) ensures design consistency across full signage lines.
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>Professional Takeaway</h2>
+
+<p>
+Designing architectural signage collateral for United Hotel Supply deepened my mastery of grid-based graphic systems, technical drawing callouts, and ADA accessibility compliance in commercial print production.
+</p>
+
+</div>
+
+<!-- SAMPLE PDF BROCHURE SECTION -->
+
+<div class="section">
+
+<h2>Product Brochure</h2>
+
+<p>
+View or download the full print-ready signage brochure to examine the complete technical documentation, color option grids, and architectural mounting specifications.
+</p>
+
+<div style="margin-top:25px;">
+  <a class="btn primary" href="ECN Brochure.pdf" target="_blank" rel="noopener noreferrer">
+    📄 View Sample Brochure (PDF)
+  </a>
+</div>
+
+</div>
+
+</div>
+
+<!-- LIGHTBOX MODAL -->
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-close" id="lightboxClose">&times;</div>
+  <img src="" alt="Enlarged View" class="lightbox-img" id="lightboxImg">
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+<h2>Back to Portfolio</h2>
+
+<a href="index.html">View Other Projects</a>
+
+</div>
+
+<script>
+
+/* PROGRESS BAR */
+
+window.addEventListener("scroll",()=>{
+
+let scrollTop=document.documentElement.scrollTop;
+
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+
+document.getElementById("progressBar").style.width=(scrollTop/height)*100+"%";
+
+});
+
+/* SCROLL REVEAL */
+
+const sections=document.querySelectorAll(".section");
+
+window.addEventListener("scroll",()=>{
+
+const trigger=window.innerHeight*0.85;
+
+sections.forEach(sec=>{
+
+if(sec.getBoundingClientRect().top<trigger){
+
+sec.classList.add("active");
+
+}
+
+});
+
+});
+
+/* RIPPLE */
+
+document.querySelectorAll(".btn").forEach(btn=>{
+
+btn.addEventListener("click",function(e){
+
+let x=e.clientX-this.offsetLeft;
+
+let y=e.clientY-this.offsetTop;
+
+let ripple=document.createElement("span");
+
+ripple.style.left=x+"px";
+
+ripple.style.top=y+"px";
+
+this.appendChild(ripple);
+
+setTimeout(()=>ripple.remove(),600);
+
+});
+
+});
+
+/* LIGHTBOX INTERACTION */
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const lightboxClose = document.getElementById("lightboxClose");
+const imgContainers = document.querySelectorAll(".img-container");
+
+imgContainers.forEach(container => {
+  container.addEventListener("click", () => {
+    const img = container.querySelector("img");
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add("active");
+  });
+});
+
+lightboxClose.addEventListener("click", () => {
+  lightbox.classList.remove("active");
+});
+
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    lightbox.classList.remove("active");
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && lightbox.classList.contains("active")) {
+    lightbox.classList.remove("active");
+  }
+});
+
+</script>
+
+</body>
+</html>
